@@ -20,18 +20,24 @@
 #       Notese que también utilizaremos la misma condición, con el valor absoluto. La lógica es: si el valor absoluto de la respuesta al cuadrado menos el objetivo, es mayor o igual a épsilon: entonces no encontramos la respuesta, es decir que nos pasamos, entonces: imprime que no se encontró la raíz cuadrada del objetivo. Else, imprime en cadena de formato que la raíz cuadrada de {objetivo} es {respuesta}
 # 7.	Si queremos ver como se procesa la respuesta utilizaremos un print statement en nuestro ciclo while
 #       print(abs(respuesta**2 – objetivo), respuesta)
+#  8.	Si queremos saber cuanto tiempo se demora, tenemos que importar el modulo time
+#       from time import time
+#       Y dentro de nuestro ciclo while, al final, incluiremos una variable llamada tiempo_total que guardara como valor time() – tiempo_inicio, tiempo_inicio debemos declararla al principio del programa con el valor de la función time()
 
 
-
+from time import time
 
 objetivo = int(input('Escoge un numero: '))
 epsilon = 0.01 #Entre mas pequeno sea nuestro epsilon, mas precisa sera la respuesta y tardaremos mas
 paso = epsilon**2
 respuesta = 0.0
+tiempo_inicio = time()
 
 while abs(respuesta**2 - objetivo) >= epsilon and respuesta <= objetivo:
     print(abs(respuesta**2 - objetivo), respuesta) #print statement para saber como funciona la ejecucion del algoritmo
     respuesta += paso
+
+    tiempo_total = time() - tiempo_inicio
 
 if abs(respuesta**2 - objetivo) >= epsilon:
     print(f'No se encontro la raiz cuadrada {objetivo}')
